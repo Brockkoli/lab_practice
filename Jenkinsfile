@@ -20,7 +20,7 @@ pipeline {
         // Add a new stage for running Python tests
         stage('Run Python Tests') {
             steps {
-                sh 'apt-get update && apt-get install -y python'
+                sh 'sudo apt-get update && sudo apt-get install -y python'
                 sh 'python -m test_ui' // Replace with your Python test command
             }
         }
