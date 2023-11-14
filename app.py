@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 def is_safe_input(input_str):
     # Regular expression patterns for detecting potential XSS and SQL Injection
-    xss_pattern = re.compile(r'<[^>]*>')
+    #xss_pattern = re.compile(r'<[^>]*>')
+    xss_pattern = re.compile(r'(<[^>]+>|javascript:|data:text/html|vbscript:|on[a-z]+=?|&#)', re.IGNORECASE)
     sql_injection_pattern = re.compile(r'(UNION|SELECT|INSERT|DELETE|UPDATE|CREATE|DROP|ALTER|EXEC|EXECUTE|;|--|\bOR\b|\bAND\b)', re.IGNORECASE)
 
     # Check for XSS
