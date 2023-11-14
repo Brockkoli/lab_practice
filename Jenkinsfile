@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         // Replace with your actual Python path
-        PATH = "/usr/bin/python3:$PATH"
+        PATH = "/usr/bin/python:$PATH"
     }
     stages {
         stage('Checkout SCM') {
@@ -20,7 +20,7 @@ pipeline {
         // Add a new stage for running Python tests
         stage('Run Python Tests') {
             steps {
-                sh 'python3 -m test_ui.py' // Replace with your Python test command
+                sh 'python -m test_ui' // Replace with your Python test command
             }
         }
     }   
