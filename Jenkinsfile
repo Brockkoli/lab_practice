@@ -15,7 +15,7 @@ pipeline {
 	
                 stage('UI Test') {
                         steps {
-                            sh 'sudo chmod 777 test_ui.py'  
+                           # sh 'sudo chmod 777 test_ui.py'  
                             sh 'python test_ui.py'  // Run the Selenium test script
                         }
                 }
