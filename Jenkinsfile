@@ -20,7 +20,11 @@ pipeline {
         // Run Python Tests
         stage('Run Python Tests') {
             steps {
-                sh 'python3 -m test_ui' // Adjust for the correct python command
+                script {
+                    docker.image('python:3.8-slim').inside {
+                        sh 'python -m test_ui'
+                    }
+                }
             }
         }
     }   
