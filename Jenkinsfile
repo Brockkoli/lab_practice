@@ -17,11 +17,26 @@ pipeline {
             }
         }
 
-        // Run Python Tests
+        // Run Python UI Tests
         stage('UI Test') {
-            steps {
-                        sh 'python -m test_ui'
+          agent {
+            docker {
+                image 'python:3.8-slim'
+                args '-u root:root'  // Use root to install packages
             }
+          }
+          steps {
+            sh '''
+                apt-get update
+                apt-get install -y firefox-esr  // Install Firefox ESR
+                wget https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-linux64.tar.gz
+                tar -xvzf geckodriver-v0.29.0-linux64.tar.gz
+                mv geckodriver /usr/local/bin/
+                pip install selenium
+
+                python -m test_ui
+            '''
+          }
         }
     }   
     post {

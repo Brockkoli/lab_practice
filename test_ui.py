@@ -1,8 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.options import Options
 
-# Initialize WebDriver
-driver = webdriver.Chrome()
+options = Options()
+options.headless = True
+
+# Initialize WebDriver with headless option
+driver = webdriver.Firefox(options=options)
 
 # Navigate to your application
 driver.get("http://localhost")  # Adjust URL as needed
