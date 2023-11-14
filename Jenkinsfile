@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        // Replace with your actual Python path
-        PATH = "/usr/bin/python:$PATH"
+        // Ensure the PATH includes the directory where Python is installed
+        PATH = "/usr/bin:$PATH"
     }
     stages {
         stage('Checkout SCM') {
@@ -17,11 +17,10 @@ pipeline {
             }
         }
 
-        // Add a new stage for running Python tests
+        // Run Python Tests
         stage('Run Python Tests') {
             steps {
-                sh 'su root -c " apt-get update && apt-get install -y python"'
-                sh 'python -m test_ui' // Replace with your Python test command
+                sh 'python3 -m test_ui' // Adjust for the correct python command
             }
         }
     }   
