@@ -18,7 +18,7 @@ pipeline {
         }
 
         // Run Python Tests
-        stage('Run Python Tests') {
+        stage('UI Test') {
             steps {
                         sh 'python -m test_ui'
             }
