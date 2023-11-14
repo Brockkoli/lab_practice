@@ -20,6 +20,7 @@ pipeline {
         // Add a new stage for running Python tests
         stage('Run Python Tests') {
             steps {
+                sh 'apk update && apk add python'
                 sh 'python -m test_ui' // Replace with your Python test command
             }
         }
