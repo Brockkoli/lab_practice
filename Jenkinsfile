@@ -12,7 +12,15 @@ pipeline {
 				dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'OWASP test'
 			}
 		}
-	}	
+	
+                stage('UI Test') {
+                        steps {
+                            sh 'chmod 777 test_ui.py'  
+                            sh 'python test_ui.py'  // Run the Selenium test script
+                        }
+                }
+
+        }	
 	post {
 		success {
 			dependencyCheckPublisher pattern: 'dependency-check-report.xml'
