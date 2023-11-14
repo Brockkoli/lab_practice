@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage('Checkout SCM') {
 			steps {
-				git 'https://github.com/Brockkoli/lab_practice.git'
+				git 'https://github.com/Brockkoli/lab_practice'
 			}
 		}
 
