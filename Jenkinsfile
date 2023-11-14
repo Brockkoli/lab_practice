@@ -20,11 +20,7 @@ pipeline {
         // Run Python Tests
         stage('Run Python Tests') {
             steps {
-                script {
-                    docker.image('python:3.8-slim').inside {
                         sh 'python -m test_ui'
-                    }
-                }
             }
         }
     }   
